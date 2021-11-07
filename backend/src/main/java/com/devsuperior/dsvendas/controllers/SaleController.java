@@ -1,6 +1,8 @@
 package com.devsuperior.dsvendas.controllers;
 
 import com.devsuperior.dsvendas.dto.SaleDTO;
+import com.devsuperior.dsvendas.dto.SaleSuccessDTO;
+import com.devsuperior.dsvendas.dto.SaleSumDTO;
 import com.devsuperior.dsvendas.services.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,6 +28,18 @@ public class SaleController {
 
         return ResponseEntity.ok(list);
 
+    }
+
+    @GetMapping("/amount-by-seller")
+    public ResponseEntity<List<SaleSumDTO>> amountGroupBySeller(){
+        List<SaleSumDTO> list = service.amountGroupBySeller();
+        return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("/success-by-seller")
+    public ResponseEntity<List<SaleSuccessDTO>> successGroupBySeller(){
+        List<SaleSuccessDTO> list = service.successGroupBySeller();
+        return ResponseEntity.ok(list);
     }
 
 }
